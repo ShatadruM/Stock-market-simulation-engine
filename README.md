@@ -65,8 +65,8 @@ An end-to-end data engineering project that simulates real-time stock market dat
 .
 ├── KafkaProducer.ipynb   # Reads CSV data and streams it to a Kafka topic
 ├── KafkaConsumer.ipynb   # Consumes the Kafka topic and writes records to S3
-├── data/
-│   └── indexProcessed.csv   # Historical stock market dataset (source data)
+├── indexProcessed.csv   # Historical stock market dataset (source data)
+│   
 └── README.md
 ```
 
@@ -127,8 +127,6 @@ Make sure port `9092` is open in your EC2 instance's security group (and `2181` 
   ```
 - The `count` in the filename increments with each message, ensuring unique object keys.
 
-> ⚠️ Update the S3 bucket path (`s3://kafka-stock-market-tutorial-youtube-darshil/...`) in `KafkaConsumer.ipynb` to point to your own bucket.
-
 ---
 
 ## ▶️ Running the Pipeline
@@ -146,20 +144,6 @@ Make sure port `9092` is open in your EC2 instance's security group (and `2181` 
 
 ---
 
-## 📊 Example Athena Query
-
-Once the Glue Crawler has cataloged the data, you can query it directly from Athena:
-
-```sql
-SELECT *
-FROM stock_market_data
-ORDER BY date DESC
-LIMIT 10;
-```
-
-*(Replace `stock_market_data` with whatever table name the Glue Crawler generates, and adjust column names to match your dataset's schema.)*
-
----
 
 ## 🚧 Future Improvements
 
@@ -171,6 +155,4 @@ LIMIT 10;
 
 ---
 
-## 📄 License
 
-This project is open source and available for educational purposes. Feel free to fork and adapt it for your own use case.
